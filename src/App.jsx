@@ -1,13 +1,14 @@
-import Provider from './pages/Provider.jsx'
+import Provider from './pages/Provider.jsx';
+import Elements from './pages/Elements.jsx';
 import { Routes, Route } from 'react-router';
 
 function App() {
 
     return (
         <div>
-            <h2>Call The Medic</h2>
             <Routes>
-                <Route path="provider" element={<Provider />} />
+                <Route path="elements" element={<Elements />} />
+                <Route index path="provider" element={<Provider />} />
             </Routes>
         </div>
     )

@@ -9,9 +9,9 @@ export default function Provider() {
         <div className='container mx-auto max-w-2xl'>
             <div className='text-2xl my-5'>Hi there from provider</div>
             <div className="flex flex-col gap-y-3">
-                <Input labelText="Email" />
+                <Input labelText="Email" inputType='email' onChange={(e) => console.log(e.target.value)} />
                 <TextArea labelText="Simple text" />
-                <Selectbox elements={["Croatia", "Germany", "Ireland"]} />
+                <Selectbox elements={["Croatia", "Germany", "Ireland"]} onChange={e => console.log(e.target.value)} />
                 <FileUpload />
                 <ImageUpload labelText="Profile photo" />
 

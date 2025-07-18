@@ -19,9 +19,22 @@ If you are developing a production application, we recommend using TypeScript wi
 - [x] spread
 
 - [x] arrow functions
-- [ ] template literals
-- [ ] this keyword
-- [ ] modules
+- [] template literals
+- [x] this keyword
+- [x] modules
 - [ ] async 
 - [ ] promises - async/await
+
+## Provider entity/ui contain fields:
+- first name, text
+- last name, text 
+- description, text area
+- price, text - decimal mask
+- role, enum - dropdown
+- address, search with dropdown
+- latitude
+- longitude
+- image, upload btn
+
+- create text, text area, dropdown, suggestion components, image upload
 

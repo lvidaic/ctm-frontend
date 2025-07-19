@@ -1,5 +1,6 @@
 import Provider from './pages/Provider.jsx';
 import Elements from './pages/Elements.jsx';
+import Client from './pages/Client.jsx';
 import { Routes, Route } from 'react-router';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
             <Routes>
                 <Route path="elements" element={<Elements />} />
                 <Route index path="provider" element={<Provider />} />
+                <Route path="client" element={<Client />} />
             </Routes>
         </div>
     )

@@ -1,4 +1,4 @@
-export default function Input({ labelText, inputType = 'text', onChange }) {
+export default function Input({ labelText, inputType = 'text', onChange, value }) {
     return (
         <div>
             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
@@ -6,6 +6,7 @@ export default function Input({ labelText, inputType = 'text', onChange }) {
             </label>
             <div className="mt-2">
                 <input
+                    value={value}
                     id="email"
                     name="email"
                     type={inputType}

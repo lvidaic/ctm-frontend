@@ -1,7 +1,7 @@
 
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
-export default function Selectbox({ elements, onChange }) {
+export default function Selectbox({ elements, onChange, value }) {
     return (
 
         <div>
@@ -10,6 +10,7 @@ export default function Selectbox({ elements, onChange }) {
             </label>
             <div className="mt-2 grid grid-cols-1">
                 <select
+                    value={value}
                     id="location"
                     onChange={onChange}
                     name="location"

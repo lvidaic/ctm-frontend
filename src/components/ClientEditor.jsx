@@ -3,6 +3,7 @@ import Input from '../components/Input.jsx';
 import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
+import Autocomplete from './Autocomplete.jsx';
 
 export default function ClientEditor({ client, onSave }) {
 
@@ -21,10 +22,13 @@ export default function ClientEditor({ client, onSave }) {
                     <Selectbox value={savedClient.sport} onChange={e => setSavedClient({ ...savedClient, sport: e.target.value })} elements={["One", "Two"]} />
                 </div>
                 <div>
-                    <Input value={savedClient.address.address} labelText="Address" onChange={e => { const changedAddr = { ...savedClient.address, address: e.target.value }; setSavedClient({ ...savedClient, address: changedAddr }) }} />
+                    <Input value={savedClient?.address?.address} labelText="Address" onChange={e => { const changedAddr = { ...savedClient.address, address: e.target.value }; setSavedClient({ ...savedClient, address: changedAddr }) }} />
                 </div>
                 <div>
                     <ImageUpload />
+                </div>
+                <div>
+                    {/* <Autocomplete /> */}
                 </div>
                 {/* <div>{savedClient.createdAt}</div> */}
                 {/* <div>{savedClient.updatedAt}</div> */}

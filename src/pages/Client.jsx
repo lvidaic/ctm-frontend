@@ -1,6 +1,6 @@
-import useSWR from "swr"
+import { useClient } from '../stores/user-store.js';
 import ClientEditor from '../components/ClientEditor.jsx';
-import { fetcher } from '../utils/fetchers.js';
+import { useParams } from 'react-router';
 
 export default function Client() {
 
@@ -8,9 +8,10 @@ export default function Client() {
         console.log(createdClient);
     }
 
-    const { data: client, error, isLoading } = useSWR("http://localhost:8080/api/clients/ff3f05dc-305e-4040-a6b1-5697bcc8c08f", fetcher);
+    const { clientId } = useParams();
+    const { client, isError, isLoading } = useClient(clientId);
 
-    if (error) {
+    if (isError) {
         return <div>Error while loading data</div>
     }
 

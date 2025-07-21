@@ -8,9 +8,9 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path="elements" element={<Elements />} />
                 <Route index path="provider" element={<Provider />} />
-                <Route path="client" element={<Client />} />
+                <Route path="elements" element={<Elements />} />
+                <Route path="client/:clientId?" element={<Client />} />
             </Routes>
         </div>
     )

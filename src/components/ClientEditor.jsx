@@ -5,7 +5,7 @@ import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
 import Autocomplete from './Autocomplete.jsx';
 
-export default function ClientEditor({ client, onSave }) {
+export default function ClientEditor({ client, onSave, image }) {
 
     const [savedClient, setSavedClient] = useState({ ...client });
 

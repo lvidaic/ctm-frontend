@@ -1,7 +1,7 @@
 import ClientEditor from '../components/ClientEditor.jsx';
 import { useClient } from '../stores/user-store.js';
 import { useParams } from 'react-router';
-import { fetcher, fetchImage } from '../utils/fetchers.js';
+import { fetchImage } from '../utils/fetchers.js';
 import useSWR from 'swr';
 
 export default function Client() {
@@ -9,7 +9,6 @@ export default function Client() {
     function save(createdClient) {
         console.log(createdClient);
     }
-
 
     const { clientId } = useParams();
     const { client } = useClient(clientId);

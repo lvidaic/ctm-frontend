@@ -12,8 +12,9 @@ export default function Client() {
 
     const { clientId } = useParams();
     const { client } = useClient(clientId);
+    console.log(clientId);
 
-    const { data: image, error: isError, isLoading } = useSWR(() => ({ url: 'http://localhost:8080/api/images/image', args: client.address.address }), fetchImage);
+    const { data: image, error: isError, isLoading } = useSWR(() => 'http://localhost:8080/api/images/image', fetchImage('http://localhost:8080/api/images/image', () => client.image.url));
 
     if (isError) {
         return <div>Error while loading data</div>

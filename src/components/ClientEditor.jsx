@@ -3,7 +3,6 @@ import Input from '../components/Input.jsx';
 import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
-import Autocomplete from './Autocomplete.jsx';
 
 export default function ClientEditor({ client, onSave, image }) {
 
@@ -26,6 +25,10 @@ export default function ClientEditor({ client, onSave, image }) {
                 </div>
                 <div>
                     <ImageUpload />
+                </div>
+                <div>
+                    this is image: {image}
+                    <img alt="" src={image} className="size-12 object-contain rounded-full bg-gray-800" />
                 </div>
                 <div>
                     {/* <Autocomplete /> */}

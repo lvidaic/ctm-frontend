@@ -4,10 +4,31 @@ import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
 import Autocomplete from './Autocomplete.jsx';
+import useSWRMutation from 'swr/mutation';
+import { fetchAutocomplete } from '../utils/fetchers.js';
 
 export default function ClientEditor({ client, onSave, image }) {
 
+    const [sessionToken, setSessionToken] = useState('');
     const [savedClient, setSavedClient] = useState({ ...client });
+    const [autocompleteItems, setAutocompleteItems] = useState([]);
+
+    const { trigger } = useSWRMutation('http://localhost:8080/api/places/autocomplete', fetchAutocomplete);
+
+    async function onAutocompleteChange(e) {
+        const query = e.target.value;
+        if (query.length < 5) {
+            return;
+        }
+        if (sessionToken === '') {
+            setSessionToken(uuid);
+        }
+        const result = await trigger({ sessionToken: sessionToken, query: query })
+        setSessionToken(result.sessionToken);
+        setAutocompleteItems(result.placeItems);
+
+        console.log("Result of autocomplete: ", result);
+    }
 
     return (
         <div className="container mx-auto sm:px-6 lg:px-8">
@@ -28,7 +49,7 @@ export default function ClientEditor({ client, onSave, image }) {
                     <ImageUpload image={image} />
                 </div>
                 <div>
-                    <Autocomplete items={["Zadar", "Zagreb", "Biograd", "Split"]} onInputChange={(e) => console.log("Input changed, calling server autocomplete: ", e.target.value)} />
+                    <Autocomplete displayItemFunction={((item) => item.text)} keyFunction={(item) => item.placeId} items={autocompleteItems} onInputChange={onAutocompleteChange} />
                 </div>
                 <button onClick={() => onSave(savedClient)}>Save</button>
             </div>

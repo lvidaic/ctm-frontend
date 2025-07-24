@@ -2,7 +2,7 @@ import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOption
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 
-export default function Autocomplete({ items, selectedLabel, onInputChange }) {
+export default function Autocomplete({ items, selectedLabel, onInputChange, onItemSelect }) {
 
     const [query, setQuery] = useState('')
     const [selectedItem, setSelectedItem] = useState(null)
@@ -14,6 +14,7 @@ export default function Autocomplete({ items, selectedLabel, onInputChange }) {
             onChange={(item) => {
                 setQuery('')
                 setSelectedItem(item)
+                onItemSelect(item);
             }}
         >
             <Label className="block text-sm/6 font-medium text-gray-900">{selectedLabel}</Label>

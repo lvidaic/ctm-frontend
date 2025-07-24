@@ -11,3 +11,8 @@ export const fetchAutocomplete = (url, { arg }) =>
   axios
     .post(url, { query: arg.query, sessionToken: arg.sessionToken })
     .then((res) => res.data);
+
+export const fetchPlaceDetails = (url, { arg }) =>
+  axios
+    .post(url, { placeId: arg.placeId, sessionToken: arg.sessionToken })
+    .then((res) => res.data);

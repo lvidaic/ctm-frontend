@@ -3,16 +3,10 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 
 
-export default function Autocomplete({ items, selectedLabel }) {
+export default function Autocomplete({ items, selectedLabel, onInputChange }) {
 
     const [query, setQuery] = useState('')
     const [selectedItem, setSelectedItem] = useState(null)
-
-    function onInputChange(event) {
-        setQuery(event.target.value);
-        console.log(query)
-        console.log(selectedItem)
-    }
 
     return (
         <Combobox

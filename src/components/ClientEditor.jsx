@@ -28,7 +28,7 @@ export default function ClientEditor({ client, onSave, image }) {
                     <ImageUpload image={image} />
                 </div>
                 <div>
-                    <Autocomplete items={["Zadar", "Zagreb", "Biograd", "Split"]} />
+                    <Autocomplete items={["Zadar", "Zagreb", "Biograd", "Split"]} onInputChange={(e) => console.log("Input changed, calling server autocomplete: ", e.target.value)} />
                 </div>
                 <button onClick={() => onSave(savedClient)}>Save</button>
             </div>

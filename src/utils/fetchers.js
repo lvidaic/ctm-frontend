@@ -6,3 +6,8 @@ export async function fetchImage({ url, args }) {
   const res = await axios.post(url, { objectName: args });
   return res.data;
 }
+
+export const fetchAutocomplete = (url, { arg }) =>
+  axios
+    .post(url, { query: arg.query, sessionToken: arg.sessionToken })
+    .then((res) => res.data);

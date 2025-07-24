@@ -3,6 +3,7 @@ import Input from '../components/Input.jsx';
 import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
+import Autocomplete from './Autocomplete.jsx';
 
 export default function ClientEditor({ client, onSave, image }) {
 
@@ -27,7 +28,7 @@ export default function ClientEditor({ client, onSave, image }) {
                     <ImageUpload image={image} />
                 </div>
                 <div>
-                    {/* <Autocomplete /> */}
+                    <Autocomplete items={["Zadar", "Zagreb", "Biograd", "Split"]} />
                 </div>
                 <button onClick={() => onSave(savedClient)}>Save</button>
             </div>

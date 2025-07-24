@@ -4,38 +4,12 @@ import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
 import Autocomplete from './Autocomplete.jsx';
-import useSWRMutation from 'swr/mutation';
-import { fetchAutocomplete, fetchPlaceDetails } from '../utils/fetchers.js';
 
 export default function ClientEditor({ client, onSave, image }) {
 
-    const [sessionToken, setSessionToken] = useState('');
     const [savedClient, setSavedClient] = useState({ ...client });
-    const [autocompleteItems, setAutocompleteItems] = useState([]);
 
-    const { trigger: triggerAutocomplete } = useSWRMutation('http://localhost:8080/api/places/autocomplete', fetchAutocomplete);
-    const { trigger: triggerDetails } = useSWRMutation('http://localhost:8080/api/places', fetchPlaceDetails);
 
-    async function onAutocompleteChange(e) {
-        const query = e.target.value;
-        if (query.length < 5) {
-            return;
-        }
-        let uuid = sessionToken === '' ? crypto.randomUUID() : sessionToken;
-
-        const result = await triggerAutocomplete({ sessionToken: uuid, query: query })
-        setSessionToken(result.sessionToken);
-        setAutocompleteItems(result.placeItems);
-
-    }
-
-    async function onItemSelect(item) {
-        if (item) {
-            const result = await triggerDetails({ sessionToken: sessionToken, placeId: item.placeId })
-            setSavedClient({ ...savedClient, address: { address: result.formattedAddress, latitude: result.latitude, longitude: result.longitude } })
-            setSessionToken('');
-        }
-    }
 
     return (
         <div className="container mx-auto sm:px-6 lg:px-8">
@@ -56,7 +30,10 @@ export default function ClientEditor({ client, onSave, image }) {
                     <ImageUpload image={image} />
                 </div>
                 <div>
-                    <Autocomplete onItemSelect={onItemSelect} displayItemFunction={((item) => item.text)} keyFunction={(item) => item.placeId} items={autocompleteItems} onInputChange={onAutocompleteChange} />
+
+                    <Autocomplete onAutocompleteSelect={address =>
+                        setSavedClient({ ...savedClient, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
+                    } />
                 </div>
                 <button onClick={() => onSave(savedClient)}>Save</button>
             </div>

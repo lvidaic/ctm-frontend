@@ -1,5 +1,6 @@
 import ClientEditor from '../components/ClientEditor.jsx';
 import { useClient } from '../stores/user-store.js';
+import { useSports } from '../stores/sports-store.js';
 import { useParams } from 'react-router';
 import { fetchImage, createClient, fetcher } from '../utils/fetchers.js';
 import useSWR from 'swr';
@@ -15,7 +16,7 @@ export default function Client() {
 
     const { clientId } = useParams();
     const { client } = useClient(clientId);
-    const { data: sports, error: isSportsError, isLoading: isSportsLoading } = useSWR("http://localhost:8080/api/sports", fetcher);
+    const { sports, isError: isSportsError, isLoading: isSportsLoading } = useSports();
 
     const { data: image, error: isError, isLoading: isLoading } = useSWR(() => ({ url: 'http://localhost:8080/api/images/image', args: client.image.url }), fetchImage);
 

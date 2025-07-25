@@ -18,17 +18,16 @@ export const fetchPlaceDetails = (url, { arg }) =>
     .then((res) => res.data);
 
 export const createClient = (url, { arg }) => {
-  console.log(arg.savedClient);
-  // const flatClient = { ...arg.savedClient, ...arg.savedClient.address };
-  //
-  // const json = JSON.stringify(flatClient);
-  // const blob = new Blob([json], {
-  //   type: "application/json",
-  // });
-  // const data = new FormData();
-  //
-  // data.append("client", blob);
-  // data.append("image", arg.savedImage);
-  //
-  // axios.post(url, data).then((res) => res.data);
+  const flatClient = { ...arg.savedClient, ...arg.savedClient.address };
+
+  const json = JSON.stringify(flatClient);
+  const blob = new Blob([json], {
+    type: "application/json",
+  });
+  const data = new FormData();
+
+  data.append("client", blob);
+  data.append("image", arg.savedImage);
+
+  axios.post(url, data).then((res) => res.data);
 };

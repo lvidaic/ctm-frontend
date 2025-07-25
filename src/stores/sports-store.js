@@ -7,7 +7,7 @@ export function useSports() {
     fetcher,
   );
   return {
-    sports: data.sort(),
+    sports: data,
     isError: error,
     isLoading,
   };

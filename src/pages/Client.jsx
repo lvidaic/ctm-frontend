@@ -2,7 +2,7 @@ import ClientEditor from '../components/ClientEditor.jsx';
 import { useClient } from '../stores/user-store.js';
 import { useSports } from '../stores/sports-store.js';
 import { useParams } from 'react-router';
-import { fetchImage, createClient, fetcher } from '../utils/fetchers.js';
+import { fetchImage, createClient } from '../utils/fetchers.js';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 
@@ -28,7 +28,7 @@ export default function Client() {
 
     return (
         <div>
-            <ClientEditor client={client} sports={sports} onSave={save} image={image} />
+            <ClientEditor client={client} sports={sports.sort()} onSave={save} image={image} />
         </div>
     )
 }

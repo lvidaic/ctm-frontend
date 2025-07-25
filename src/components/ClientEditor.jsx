@@ -4,6 +4,7 @@ import Selectbox from '../components/Selectbox.jsx';
 import TextArea from '../components/TextArea';
 import ImageUpload from './ImageUpload.jsx';
 import Autocomplete from './Autocomplete.jsx';
+import Button from './Button.jsx';
 
 export default function ClientEditor({ client, image, sports, onSave }) {
 
@@ -38,7 +39,7 @@ export default function ClientEditor({ client, image, sports, onSave }) {
                         setSavedClient({ ...savedClient, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                     } />
                 </div>
-                <button onClick={() => onSave({ savedClient, savedImage })}>Save</button>
+                <Button onClick={() => onSave({ savedClient, savedImage })}>Save</Button>
             </div>
         </div>
     )

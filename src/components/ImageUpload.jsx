@@ -1,18 +1,20 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from 'react';
 
-export default function ImageUpload({ labelText, image }) {
+export default function ImageUpload({ labelText, image, onFileLoad }) {
 
 
     const [img, setImg] = useState(image)
-
 
     function handleImageChange(event) {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
             const reader = new FileReader();
             reader.onload = (e) => {
-                setImg(e.target.result);
+                const url = e.target.result;
+                setImg(url);
+                onFileLoad(file);
+
             };
             reader.readAsDataURL(file);
         }

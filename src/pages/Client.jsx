@@ -1,13 +1,16 @@
 import ClientEditor from '../components/ClientEditor.jsx';
 import { useClient } from '../stores/user-store.js';
 import { useParams } from 'react-router';
-import { fetchImage } from '../utils/fetchers.js';
+import { fetchImage, createClient } from '../utils/fetchers.js';
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 
 export default function Client() {
 
-    function save(createdClient) {
-        console.log(createdClient);
+    const { trigger } = useSWRMutation('http://localhost:8080/api/clients', createClient);
+
+    function save({ savedClient, savedImage }) {
+        trigger({ savedClient, savedImage })
     }
 
     const { clientId } = useParams();

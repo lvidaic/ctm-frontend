@@ -1,12 +1,12 @@
 
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
-export default function Selectbox({ elements, onChange, value }) {
+export default function Selectbox({ elements, onChange, value, textLabel }) {
     return (
 
         <div>
             <label htmlFor="location" className="block text-sm/6 font-medium text-gray-900">
-                Location
+                {textLabel}
             </label>
             <div className="mt-2 grid grid-cols-1">
                 <select

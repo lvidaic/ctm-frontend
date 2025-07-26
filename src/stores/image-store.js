@@ -1,8 +1,11 @@
-export function useImage(client) {
+import useSWR from "swr";
+import { fetchImage } from "../utils/fetchers";
+
+export function useImage(user) {
   const { data, error, isLoading } = useSWR(
     () => ({
       url: "http://localhost:8080/api/images/image",
-      args: client.image.url,
+      args: user.image.url,
     }),
     fetchImage,
   );

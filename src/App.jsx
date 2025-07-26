@@ -6,7 +6,8 @@ import { Routes, Route } from 'react-router';
 function App() {
 
     return (
-        <div>
+
+        <div className="container mx-auto sm:px-6 lg:px-8">
             <Routes>
                 <Route index path="provider" element={<Provider />} />
                 <Route path="elements" element={<Elements />} />

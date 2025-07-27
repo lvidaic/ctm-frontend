@@ -27,16 +27,13 @@ export default function ClientEditor({ client, image, sports, onSave }) {
                 <Selectbox value={savedClient.sport} textLabel="Sport" onChange={e => setSavedClient({ ...savedClient, sport: e.target.value })} elements={sports} />
             </div>
             <div>
-                <Input value={savedClient.address ? savedClient.address.address : ''} labelText="Address" onChange={e => { const changedAddr = { ...savedClient.address, address: e.target.value }; setSavedClient({ ...savedClient, address: changedAddr }) }} />
-            </div>
-            <div>
                 <ImageUpload image={image} labelText="Image" onFileLoad={onFileLoad} />
             </div>
             <div>
-
                 <Autocomplete onAutocompleteSelect={address =>
                     setSavedClient({ ...savedClient, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                 } />
+                <p>{savedClient.address}</p>
             </div>
             <Button onClick={() => onSave({ savedClient, savedImage })}>Save</Button>
         </div>

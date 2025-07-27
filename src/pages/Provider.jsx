@@ -24,24 +24,6 @@ export default function Provider() {
 
     return (
         <>
-            <div>
-                <p>{provider.firstName}</p>
-            </div>
-            <div>
-                <p>{provider.lastName}</p>
-            </div>
-            <div>
-                <p>{provider.description}</p>
-            </div>
-            <div>
-                <p>{provider.createdAt}</p>
-            </div>
-            <div>
-                <p>{provider.updatedAt}</p>
-            </div>
-            <div>
-                <p>{provider.role}</p>
-            </div>
             <ProviderEditor image={image} provider={provider} onSave={save} />
         </>
     )

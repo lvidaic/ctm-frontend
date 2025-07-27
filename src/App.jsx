@@ -9,9 +9,10 @@ function App() {
 
         <div className="container mx-auto px-4 lg:px-8">
             <Routes>
-                <Route index path="provider/:providerId" element={<Provider />} />
+                <Route index path="provider/:providerId?" element={<Provider />} />
                 <Route path="elements" element={<Elements />} />
                 <Route path="client/:clientId?" element={<Client />} />
+                <Route path="provider/:providerId?" element={<Provider />} />
             </Routes>
         </div>
     )

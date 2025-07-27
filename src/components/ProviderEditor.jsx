@@ -17,6 +17,7 @@ export default function ProviderEditor({ image, provider, onSave }) {
 
     return (
         <div className="flex flex-col">
+            <h3 className="text-2xl font-medium mb-2">User profile</h3>
             <Input labelText="First Name" value={savedProvider.firstName} onChange={(e) => setSavedProvider({ ...savedProvider, firstName: e.target.value })} />
             <Input labelText="Last Name" value={savedProvider.lastName} onChange={(e) => setSavedProvider({ ...savedProvider, lastName: e.target.value })} />
             <TextArea labelText="Description" value={savedProvider.description} onChange={e => setSavedProvider({ ...savedProvider, description: e.target.value })} />
@@ -26,7 +27,7 @@ export default function ProviderEditor({ image, provider, onSave }) {
                 <Autocomplete textLabel="Address" onAutocompleteSelect={address =>
                     setSavedProvider({ ...savedProvider, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                 } />
-                <p>{savedProvider.address.address}</p>
+                <p>{savedProvider?.address?.address}</p>
             </div>
             <Button onClick={() => onSave({ savedProvider, savedImage })}>Save</Button>
         </div>

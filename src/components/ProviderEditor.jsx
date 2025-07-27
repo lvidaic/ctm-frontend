@@ -23,7 +23,7 @@ export default function ProviderEditor({ image, provider, onSave }) {
             <Selectbox labelText="Role" value={savedProvider.role} elements={["DOCTOR", "TECHNITIAN"]} onChange={e => setSavedProvider({ ...savedProvider, role: e.target.value })} />
             <div>
                 <ImageUpload image={image} labelText="Image" onFileLoad={onFileLoad} />
-                <Autocomplete onAutocompleteSelect={address =>
+                <Autocomplete textLabel="Address" onAutocompleteSelect={address =>
                     setSavedProvider({ ...savedProvider, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                 } />
                 <p>{savedProvider.address.address}</p>

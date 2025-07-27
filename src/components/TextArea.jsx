@@ -2,7 +2,7 @@
 export default function TextArea({ labelText, onChange, value }) {
     return (
         <div>
-            <label htmlFor="comment" className="block text-sm/6 font-edium text-gray-900">{labelText}</label>
+            <label htmlFor="comment" className="block text-sm/6 font-medium text-gray-900">{labelText}</label>
             <div className="mt-2">
                 <textarea
                     id="comment"

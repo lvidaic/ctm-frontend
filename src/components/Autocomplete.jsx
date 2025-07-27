@@ -4,7 +4,7 @@ import useSWRMutation from 'swr/mutation';
 import { fetchAutocomplete, fetchPlaceDetails } from '../utils/fetchers.js';
 import { useState } from 'react';
 
-export default function Autocomplete({ selectedLabel, onAutocompleteSelect }) {
+export default function Autocomplete({ selectedLabel, onAutocompleteSelect, textLabel }) {
 
 
     const [autocompleteItems, setAutocompleteItems] = useState([]);
@@ -35,7 +35,10 @@ export default function Autocomplete({ selectedLabel, onAutocompleteSelect }) {
     }
 
     return (
-        <AutocompleteInput items={autocompleteItems} selectedLabel={selectedLabel} onInputChange={onAutocompleteChange} onItemSelect={onItemSelect} />
+        <div>
+            <h3>{textLabel}</h3>
+            <AutocompleteInput items={autocompleteItems} selectedLabel={selectedLabel} onInputChange={onAutocompleteChange} onItemSelect={onItemSelect} />
+        </div>
 
     )
 }

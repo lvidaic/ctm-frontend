@@ -31,3 +31,16 @@ export const createClient = (url, { arg }) => {
 
   axios.post(url, data).then((res) => res.data);
 };
+
+export const createProvider = (url, { arg }) => {
+  const flatProvider = { ...arg.savedProvider, ...arg.savedProvider.address };
+  const json = JSON.stringify(flatProvider);
+  const blob = new Blob([json], {
+    type: "appliaction/json",
+  });
+  const data = new FormData();
+
+  data.append("provider", blob);
+  data.append("image", arg.savedImage);
+  axios.post(url, data).then((res) => res.data);
+};

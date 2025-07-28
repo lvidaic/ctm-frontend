@@ -40,6 +40,5 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - [ ] hardcode client id (it will be loaded during auth process)
 - [ ] try to extract image loading in separate store method and reuse it
-
-
+- [ ] extract axios config in separate configutaion:> [!WARNING]
 

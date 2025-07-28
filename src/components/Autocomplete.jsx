@@ -36,7 +36,7 @@ export default function Autocomplete({ selectedLabel, onAutocompleteSelect, text
 
     return (
         <div>
-            <h3>{textLabel}</h3>
+            <label className='block text-sm/6 font-medium text-gray-900'>{textLabel}</label>
             <AutocompleteInput items={autocompleteItems} selectedLabel={selectedLabel} onInputChange={onAutocompleteChange} onItemSelect={onItemSelect} />
         </div>
 

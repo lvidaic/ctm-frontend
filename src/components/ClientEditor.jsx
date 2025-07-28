@@ -24,13 +24,13 @@ export default function ClientEditor({ client, image, sports, onSave }) {
                 <TextArea value={savedClient.description} labelText="Description" onChange={e => setSavedClient({ ...savedClient, description: e.target.value })} />
             </div>
             <div>
-                <Selectbox value={savedClient.sport} textLabel="Sport" onChange={e => setSavedClient({ ...savedClient, sport: e.target.value })} elements={sports} />
+                <Selectbox value={savedClient.sport} labelText="Sport" onChange={e => setSavedClient({ ...savedClient, sport: e.target.value })} elements={sports} />
             </div>
             <div>
                 <ImageUpload image={image} labelText="Image" onFileLoad={onFileLoad} />
             </div>
             <div>
-                <Autocomplete onAutocompleteSelect={address =>
+                <Autocomplete textLabel="Address" onAutocompleteSelect={address =>
                     setSavedClient({ ...savedClient, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                 } />
                 <p>{savedClient.address}</p>

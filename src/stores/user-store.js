@@ -13,3 +13,7 @@ export function useClient(id) {
     isLoading: isLoading,
   };
 }
+
+export function useCurrentClient() {
+  return useClient("34ef239c-5230-4064-9129-ce995de4ca5a");
+}

@@ -45,3 +45,17 @@ export const createProvider = (url, { arg }) => {
   data.append("image", arg.savedImage);
   axios.post(url, data).then((res) => res.data);
 };
+
+export function createEvent(url, { arg }) {
+  axios
+    .post(
+      url,
+      { ...arg.event },
+      {
+        headers: {
+          "X-ClientId": arg.client.id,
+        },
+      },
+    )
+    .then((res) => res.data);
+}

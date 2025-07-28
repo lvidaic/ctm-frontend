@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import Button from "../components/Button.jsx";
-import { useCurrentProvider } from "../stores/provider-store.js";
+import { useCurrentClient } from "../stores/user-store.js";
 export default function Home() {
 
-    const { provider, isError, isLoading } = useCurrentProvider();
+    const { client, isError, isLoading } = useCurrentClient();
     const navigate = useNavigate();
 
     if (isError) {
@@ -15,8 +15,9 @@ export default function Home() {
     }
 
     return (
-        <div>
-            <Button onClick={() => navigate("/provider/" + provider.id)}> Profile</Button>
+        <div className="mt-3 flex flex-col gap-y-3">
+            <Button onClick={() => navigate("/client/" + client.id)}> Profile</Button>
+            <Button onClick={() => navigate("/event/")}> New Event </Button>
         </div >
     )
 }

@@ -24,7 +24,7 @@ export default function ImageUpload({ labelText, image, onFileLoad }) {
             <label htmlFor="photo" className="block text-sm/6 font-medium text-gray-900">
                 {labelText}
             </label>
-            <div className="mt-2 flex items-center gap-x-3">
+            <div className="mt-2 flex flex-col gap-y-3 md:flex-row md:gap-x-3">
                 {!img ?
                     <UserCircleIcon aria-hidden="true" className="size-20 text-gray-300" />
                     :

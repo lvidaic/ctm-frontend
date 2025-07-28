@@ -35,8 +35,9 @@ export const createClient = (url, { arg }) => {
 export const createProvider = (url, { arg }) => {
   const flatProvider = { ...arg.savedProvider, ...arg.savedProvider.address };
   const json = JSON.stringify(flatProvider);
+
   const blob = new Blob([json], {
-    type: "appliaction/json",
+    type: "application/json",
   });
   const data = new FormData();
 

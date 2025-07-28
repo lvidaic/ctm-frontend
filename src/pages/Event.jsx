@@ -1,12 +1,11 @@
 import { useParams } from "react-router";
-import useSWR from "swr";
-import { fetcher } from "../utils/fetchers";
 import EventEditor from "../components/EventEditor";
+import { useEvent } from "../stores/event-store";
 
 export default function Event() {
 
     const { eventId } = useParams();
-    const { data: event, error: isError, isLoading } = useSWR("http://localhost:8080/api/events/" + eventId, fetcher);
+    const { event, isError, isLoading } = useEvent(eventId);
 
     if (isError) {
         return <div>Error while loading data</div>
@@ -17,11 +16,11 @@ export default function Event() {
     }
 
     return (
-        <div>
-            <h3 className="text-2xl">
+        <div className="flex flex-col mt-5">
+            <h3 className="text-2xl mb-2">
                 Event
             </h3>
-            <EventEditor />
+            <EventEditor event={event} />
         </div>
     );
 }

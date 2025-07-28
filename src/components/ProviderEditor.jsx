@@ -16,8 +16,7 @@ export default function ProviderEditor({ image, provider, onSave }) {
     const [savedImage, setSavedImage] = useState(null);
 
     return (
-        <div className="flex flex-col">
-            <h3 className="text-2xl font-medium mb-2">User profile</h3>
+        <>
             <Input labelText="First Name" value={savedProvider.firstName} onChange={(e) => setSavedProvider({ ...savedProvider, firstName: e.target.value })} />
             <Input labelText="Last Name" value={savedProvider.lastName} onChange={(e) => setSavedProvider({ ...savedProvider, lastName: e.target.value })} />
             <TextArea labelText="Description" value={savedProvider.description} onChange={e => setSavedProvider({ ...savedProvider, description: e.target.value })} />
@@ -30,6 +29,6 @@ export default function ProviderEditor({ image, provider, onSave }) {
                 <p>{savedProvider?.address?.address}</p>
             </div>
             <Button onClick={() => onSave({ savedProvider, savedImage })}>Save</Button>
-        </div>
+        </>
     )
 }

@@ -16,7 +16,7 @@ export default function ClientEditor({ client, image, sports, onSave }) {
     }
 
     return (
-        <div className="flex flex-col">
+        <>
             <div>
                 <Input value={savedClient.name} labelText="Name" onChange={e => setSavedClient({ ...savedClient, name: e.target.value })} />
             </div>
@@ -36,6 +36,6 @@ export default function ClientEditor({ client, image, sports, onSave }) {
                 <p>{savedClient.address}</p>
             </div>
             <Button onClick={() => onSave({ savedClient, savedImage })}>Save</Button>
-        </div>
+        </>
     )
 }

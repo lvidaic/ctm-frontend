@@ -33,7 +33,7 @@ export default function ClientEditor({ client, image, sports, onSave }) {
                 <Autocomplete textLabel="Address" onAutocompleteSelect={address =>
                     setSavedClient({ ...savedClient, address: { address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude } })
                 } />
-                <p>{savedClient.address}</p>
+                <p>{savedClient?.address?.address}</p>
             </div>
             <Button onClick={() => onSave({ savedClient, savedImage })}>Save</Button>
         </>

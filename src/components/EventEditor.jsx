@@ -10,7 +10,7 @@ export default function EventEditor({ event, onSave }) {
     const [savedEvent, setSavedEvent] = useState({ ...event })
 
     return (
-        <div >
+        <div>
             <Input labelText="Title" value={savedEvent.title} onChange={e => setSavedEvent({ ...savedEvent, title: e.target.value })} />
             <TextArea labelText="Description" value={savedEvent.description} onChange={e => setSavedEvent({ ...savedEvent, description: e.target.value })} />
 

@@ -47,5 +47,6 @@ If you are developing a production application, we recommend using TypeScript wi
     * term should have time (maybe in future add multi day)
     * term should have required medical personel
     * price per hour 
+    * add mask for price field, either create custom input for time or use it how it is 
 
 

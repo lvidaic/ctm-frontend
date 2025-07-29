@@ -42,3 +42,10 @@ If you are developing a production application, we recommend using TypeScript wi
 - [ ] try to extract image loading in separate store method and reuse it
 - [ ] extract axios config in separate configutaion:> [!WARNING]
 - [ ] add minimal price to provider profile, add fetching of medic rules
+- [ ] add list of events for each client, current, upcoming...
+- [ ] create ui for terms
+    * term should have time (maybe in future add multi day)
+    * term should have required medical personel
+    * price per hour 
+
+

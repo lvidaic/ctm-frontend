@@ -14,8 +14,8 @@ function Term({ term, onSave, onRemove }) {
 
     return (
         <div className="border p-4 my-4">
-            <Input labelText="Start Time" type="datetime-local" value={savedTerm.startTime} onChange={e => setSavedTerm({ ...savedTerm, startTime: e.target.value })} />
-            <Input labelText="End Time" type="datetime-local" value={savedTerm.endTime} onChange={e => setSavedTerm({ ...savedTerm, endTime: e.target.value })} />
+            <Input labelText="Start Time" inputType="time" value={savedTerm.startTime} onChange={e => setSavedTerm({ ...savedTerm, startTime: e.target.value })} />
+            <Input labelText="End Time" inputType="time" value={savedTerm.endTime} onChange={e => setSavedTerm({ ...savedTerm, endTime: e.target.value })} />
             <Selectbox
                 labelText="Required Personnel"
                 elements={personnelOptions}

@@ -4,6 +4,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
+import { NumericFormat } from "react-number-format";
 
 function Term({ term, onSave, onRemove }) {
     const [savedTerm, setSavedTerm] = useState({ ...term });
@@ -23,7 +24,26 @@ function Term({ term, onSave, onRemove }) {
                 onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })}
             />
             <TextArea labelText="Description" value={savedTerm.description} onChange={e => setSavedTerm({ ...savedTerm, description: e.target.value })} />
-            <Input labelText="Compensation per hour" value={savedTerm.compensation} onChange={e => setSavedTerm({ ...savedTerm, compensation: e.target.value })} />
+            {/* <Input labelText="Compensation per hour" value={savedTerm.compensation} onChange={e => setSavedTerm({ ...savedTerm, compensation: e.target.value })} /> */}
+            <div>
+                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                    Compensation
+                </label>
+                <div className="mt-2">
+
+                    <NumericFormat
+                        value={savedTerm.compensation}
+                        onValueChange={e => setSavedTerm({ ...savedTerm, compensation: e.value })}
+                        thousandSeparator="."
+                        decimalSeparator=","
+                        prefix="€ "
+                        decimalScale={2}
+                        fixedDecimalScale={true}
+                        allowNegative={false}
+                        placeholder="€ 0,00"
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" displayType="input" />
+                </div>
+            </div>
             <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
             <Button onClick={() => onRemove(term)}>Remove Term</Button>
         </div>

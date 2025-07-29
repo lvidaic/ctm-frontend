@@ -13,7 +13,7 @@ function Term({ term, onSave, onRemove }) {
     ];
 
     return (
-        <div className="border p-4 my-4">
+        <div className="border p-4 my-4 rounded-md border-gray-300">
             <Input labelText="Start Time" inputType="time" value={savedTerm.startTime} onChange={e => setSavedTerm({ ...savedTerm, startTime: e.target.value })} />
             <Input labelText="End Time" inputType="time" value={savedTerm.endTime} onChange={e => setSavedTerm({ ...savedTerm, endTime: e.target.value })} />
             <Selectbox
@@ -23,6 +23,7 @@ function Term({ term, onSave, onRemove }) {
                 onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })}
             />
             <TextArea labelText="Description" value={savedTerm.description} onChange={e => setSavedTerm({ ...savedTerm, description: e.target.value })} />
+            <Input labelText="Compensation per hour" value={savedTerm.compensation} onChange={e => setSavedTerm({ ...savedTerm, compensation: e.target.value })} />
             <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
             <Button onClick={() => onRemove(term)}>Remove Term</Button>
         </div>

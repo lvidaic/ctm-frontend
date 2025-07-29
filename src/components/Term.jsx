@@ -9,7 +9,7 @@ function Term({ term, onSave, onRemove }) {
     const [savedTerm, setSavedTerm] = useState({ ...term });
 
     const personnelOptions = [
-        "DOCTOR", "NURSE", "TECHINTIAN"
+        "DOCTOR", "NURSE", "TECHNICIAN"
     ];
 
     return (

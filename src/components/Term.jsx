@@ -2,16 +2,26 @@
 import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
+import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
 
 function Term({ term, onSave, onRemove }) {
     const [savedTerm, setSavedTerm] = useState({ ...term });
 
+    const personnelOptions = [
+        "DOCTOR", "NURSE", "TECHINTIAN"
+    ];
+
     return (
         <div className="border p-4 my-4">
             <Input labelText="Start Time" type="datetime-local" value={savedTerm.startTime} onChange={e => setSavedTerm({ ...savedTerm, startTime: e.target.value })} />
             <Input labelText="End Time" type="datetime-local" value={savedTerm.endTime} onChange={e => setSavedTerm({ ...savedTerm, endTime: e.target.value })} />
-            <Input labelText="Required Personnel" value={savedTerm.requiredPersonnel} onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })} />
+            <Selectbox
+                labelText="Required Personnel"
+                elements={personnelOptions}
+                value={savedTerm.requiredPersonnel}
+                onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })}
+            />
             <TextArea labelText="Description" value={savedTerm.description} onChange={e => setSavedTerm({ ...savedTerm, description: e.target.value })} />
             <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
             <Button onClick={() => onRemove(term)}>Remove Term</Button>

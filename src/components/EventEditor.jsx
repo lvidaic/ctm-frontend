@@ -3,11 +3,16 @@ import Autocomplete from "./Autocomplete.jsx";
 import Button from "./Button";
 import Input from "./Input";
 import TextArea from "./TextArea";
+import TermList from "./Term.jsx";
 
 
 export default function EventEditor({ event, onSave }) {
 
     const [savedEvent, setSavedEvent] = useState({ ...event })
+
+    function handleTermsChange(terms) {
+        setSavedEvent({ ...savedEvent, terms: terms });
+    }
 
     return (
         <div>
@@ -18,6 +23,7 @@ export default function EventEditor({ event, onSave }) {
                 setSavedEvent({ ...savedEvent, address: address.formattedAddress, latitude: address.latitude, longitude: address.longitude })
             } />
             <p>{savedEvent?.address}</p>
+            <TermList terms={savedEvent.terms || []} onTermsChange={handleTermsChange} />
             <Button onClick={() => onSave(savedEvent)}>Save</Button>
 
         </div>

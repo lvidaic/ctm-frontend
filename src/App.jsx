@@ -26,7 +26,7 @@ function App() {
         <div className="container mx-auto px-4 lg:px-8">
             <nav className='flex flex-row justify-between gap-x-3 mt-3'>
                 <div className='rounded-lg border-gray-300 border-2 py-2 px-3'>
-                    <NavLink onClick={(e) => navigate(-1)}><ArrowUturnLeftIcon className='text-gray-900 size-8' /></NavLink>
+                    <NavLink onClick={() => navigate(-1)}><ArrowUturnLeftIcon className='text-gray-900 size-8' /></NavLink>
                 </div>
                 <div className='flex flex-row gap-x-3'>
                     <NavLink to="/" className='rounded-lg border-2 border-gray-300 py-2 px-3'><HomeIcon className='text-gray-900 size-8' /></NavLink>

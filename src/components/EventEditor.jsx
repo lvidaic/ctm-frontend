@@ -4,7 +4,6 @@ import Button from "./Button";
 import Input from "./Input";
 import TextArea from "./TextArea";
 import TermList from "./TermList.jsx";
-import TermEditor from "./TermEditor.jsx";
 
 
 export default function EventEditor({ event, onSave }) {
@@ -26,7 +25,6 @@ export default function EventEditor({ event, onSave }) {
     ]
 
     const [savedEvent, setSavedEvent] = useState({ ...event, terms })
-    const [editTerm, setEditTerm] = useState(false);
 
     function handleTermsChange(terms) {
         setSavedEvent({ ...savedEvent, terms: terms });

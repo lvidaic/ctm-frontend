@@ -6,7 +6,7 @@ import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
 import { NumericFormat } from "react-number-format";
 
-export default function TermEditor({ term, onSave, onRemove }) {
+export default function TermEditor({ term, onSave, onRemove, onClose }) {
     const [savedTerm, setSavedTerm] = useState({ ...term });
 
     const personnelOptions = [
@@ -45,8 +45,8 @@ export default function TermEditor({ term, onSave, onRemove }) {
             </div>
             <div className="flex mt-2 gap-x-2">
                 <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
-                <Button onClick={() => onRemove(term)}>Remove Term</Button>
+                <Button onClick={onClose}>Close</Button>
             </div>
-        </div>
+        </div >
     );
 }

@@ -25,15 +25,15 @@ export default function TermList({ terms, onTermsChange }) {
         onTermsChange(newTerms);
     }
 
-    function handleAddTerm() {
-        setIsEditMode(true);
+    function toggleEditor() {
+        setIsEditMode(!isEditMode);
     }
 
     return (
         <div>
             <h4 className="text-xl mb-3">Terms</h4>
-            <Button className="w-24" onClick={handleAddTerm}>Add Term</Button>
-            {isEditMode && <TermEditor />}
+            <Button className="w-24" onClick={toggleEditor}>{isEditMode ? 'Close' : 'Add'}</Button>
+            {isEditMode && <TermEditor onClose={toggleEditor} />}
             <ul role="list" className="divide-y divide-gray-100">
                 {terms.map((term) => (
                     <TermItem term={term} onRemoveTerm={handleRemoveTerm} />

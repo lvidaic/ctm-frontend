@@ -3,11 +3,11 @@ import Autocomplete from "./Autocomplete.jsx";
 import Button from "./Button";
 import Input from "./Input";
 import TextArea from "./TextArea";
-import TermList from "./Term.jsx";
+import TermList from "./TermList.jsx";
+import TermEditor from "./TermEditor.jsx";
 
 
 export default function EventEditor({ event, onSave }) {
-
     const terms = [
         {
             description: "Football Match Little guys",
@@ -26,6 +26,7 @@ export default function EventEditor({ event, onSave }) {
     ]
 
     const [savedEvent, setSavedEvent] = useState({ ...event, terms })
+    const [editTerm, setEditTerm] = useState(false);
 
     function handleTermsChange(terms) {
         setSavedEvent({ ...savedEvent, terms: terms });

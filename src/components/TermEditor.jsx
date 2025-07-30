@@ -4,10 +4,9 @@ import Button from "./Button";
 import Input from "./Input";
 import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
-import TermItem from "./TermItem";
 import { NumericFormat } from "react-number-format";
 
-function Term({ term, onSave, onRemove }) {
+export default function TermEditor({ term, onSave, onRemove }) {
     const [savedTerm, setSavedTerm] = useState({ ...term });
 
     const personnelOptions = [
@@ -25,7 +24,6 @@ function Term({ term, onSave, onRemove }) {
                 onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })}
             />
             <TextArea labelText="Description" value={savedTerm.description} onChange={e => setSavedTerm({ ...savedTerm, description: e.target.value })} />
-            {/* <Input labelText="Compensation per hour" value={savedTerm.compensation} onChange={e => setSavedTerm({ ...savedTerm, compensation: e.target.value })} /> */}
             <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Compensation
@@ -49,41 +47,6 @@ function Term({ term, onSave, onRemove }) {
                 <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
                 <Button onClick={() => onRemove(term)}>Remove Term</Button>
             </div>
-        </div>
-    );
-}
-
-export default function TermList({ terms, onTermsChange }) {
-    function handleSaveTerm(term) {
-        const newTerms = [...terms];
-        const index = newTerms.findIndex(t => t.id === term.id);
-        if (index === -1) {
-            newTerms.push(term);
-        } else {
-            newTerms[index] = term;
-        }
-        onTermsChange(newTerms);
-    }
-
-    function handleRemoveTerm(term) {
-        const newTerms = terms.filter(t => t.id !== term.id);
-        onTermsChange(newTerms);
-    }
-
-    function handleAddTerm() {
-        const newTerm = { id: Date.now(), startTime: '', endTime: '', requiredPersonnel: '', description: '' };
-        onTermsChange([...terms, newTerm]);
-    }
-
-    return (
-        <div>
-            <h4 className="text-xl mb-3">Terms</h4>
-            <Button className="w-24" onClick={handleAddTerm}>Add Term</Button>
-            <ul role="list" className="divide-y divide-gray-100">
-                {terms.map((term) => (
-                    <TermItem term={term} onRemoveTerm={handleRemoveTerm} />
-                ))}
-            </ul>
         </div>
     );
 }

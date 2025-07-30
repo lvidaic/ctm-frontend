@@ -2,13 +2,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
 
-const statuses = {
-    Complete: 'text-green-700 bg-green-50 ring-green-600/20',
-    'In progress': 'text-gray-600 bg-gray-50 ring-gray-500/10',
-    Archived: 'text-yellow-800 bg-yellow-50 ring-yellow-600/20',
-}
-
-
 export default function TermItem({ term }) {
     return (
         <li key={term.id} className="flex items-center justify-between gap-x-6 py-5 hover:cursor-pointer">

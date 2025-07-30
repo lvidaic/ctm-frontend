@@ -5,30 +5,11 @@ import Input from "./Input";
 import TextArea from "./TextArea";
 import TermList from "./TermList.jsx";
 
-
 export default function EventEditor({ event, onSave }) {
-    const terms = [
-        {
-            description: "Football Match Little guys",
-            startTime: "10:30",
-            endTime: "11:30",
-            compensation: 100.00,
-            requiredPersonnel: "TECHNICIAN"
-        },
-        {
-            description: "Bit older Guys",
-            startTime: "12:00",
-            endTime: "13:30",
-            compensation: 120.00,
-            requiredPersonnel: "DOCTOR"
-        }
-    ]
 
-    const [savedEvent, setSavedEvent] = useState({ ...event, terms })
+    const [savedEvent, setSavedEvent] = useState({ ...event })
 
     function handleTermsChange(terms) {
-
-        console.log(savedEvent)
         setSavedEvent({ ...savedEvent, terms });
     }
 

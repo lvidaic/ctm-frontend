@@ -49,7 +49,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - [x] price per hour 
 - [x] add mask for price field, either create custom input for time or use it how it is 
 - [ ] add list of task items (be able to delete (only past ones, be able to cancel event))
-- [ ] add navigation
+- [x] add navigation
 - [ ] address autocomplete should display latest value
 - [ ] finish saving of events with terms 
 

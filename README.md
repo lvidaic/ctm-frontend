@@ -22,7 +22,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - [] template literals
 - [x] this keyword
 - [x] modules
-- [ ] async 
+- [x] async 
 - [ ] promises - async/await
 
 ## Provider entity/ui contain fields:
@@ -38,15 +38,18 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - create text, text area, dropdown, suggestion components, image upload
 
-- [ ] hardcode client id (it will be loaded during auth process)
-- [ ] try to extract image loading in separate store method and reuse it
+- [x] hardcode client id (it will be loaded during auth process)
+- [x] try to extract image loading in separate store method and reuse it
 - [ ] extract axios config in separate configutaion:> [!WARNING]
 - [ ] add minimal price to provider profile, add fetching of medic rules
 - [ ] add list of events for each client, current, upcoming...
-- [ ] create ui for terms
-    * term should have time (maybe in future add multi day)
-    * term should have required medical personel
-    * price per hour 
-    * add mask for price field, either create custom input for time or use it how it is 
-
+- [x] create ui for terms
+- [ ] term should have time (maybe in future add multi day)
+- [x] term should have required medical personnel
+- [x] price per hour 
+- [x] add mask for price field, either create custom input for time or use it how it is 
+- [ ] add list of task items (be able to delete (only past ones, be able to cancel event))
+- [ ] add navigation
+- [ ] address autocomplete should display latest value
+- [ ] finish saving of events with terms 
 

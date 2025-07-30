@@ -4,6 +4,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
+import TermItem from "./TermItem";
 import { NumericFormat } from "react-number-format";
 
 function Term({ term, onSave, onRemove }) {
@@ -74,12 +75,16 @@ export default function TermList({ terms, onTermsChange }) {
         onTermsChange([...terms, newTerm]);
     }
 
+    {/* <Term key={term.id} term={term} onSave={handleSaveTerm} onRemove={handleRemoveTerm} /> */ }
     return (
         <div>
             <h4 className="text-xl">Terms</h4>
-            {terms.map(term => (
-                <Term key={term.id} term={term} onSave={handleSaveTerm} onRemove={handleRemoveTerm} />
-            ))}
+
+            <ul role="list" className="divide-y divide-gray-100">
+                {terms.map((term) => (
+                    <TermItem term={term} />
+                ))}
+            </ul>
             <Button onClick={handleAddTerm}>Add Term</Button>
         </div>
     );

@@ -27,7 +27,9 @@ export default function EventEditor({ event, onSave }) {
     const [savedEvent, setSavedEvent] = useState({ ...event, terms })
 
     function handleTermsChange(terms) {
-        setSavedEvent({ ...savedEvent, terms: terms });
+
+        console.log(savedEvent)
+        setSavedEvent({ ...savedEvent, terms });
     }
 
     return (

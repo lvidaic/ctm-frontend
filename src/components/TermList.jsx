@@ -10,13 +10,9 @@ export default function TermList({ terms, onTermsChange }) {
     const [isEditMode, setIsEditMode] = useState(false);
 
     function handleSaveTerm(term) {
+        term.id = crypto.randomUUID();
         const newTerms = [...terms];
-        const index = newTerms.findIndex(t => t.id === term.id);
-        if (index === -1) {
-            newTerms.push(term);
-        } else {
-            newTerms[index] = term;
-        }
+        newTerms.push(term);
         onTermsChange(newTerms);
     }
 
@@ -33,10 +29,10 @@ export default function TermList({ terms, onTermsChange }) {
         <div>
             <h4 className="text-xl mb-3">Terms</h4>
             <Button className="w-24" onClick={toggleEditor}>{isEditMode ? 'Close' : 'Add'}</Button>
-            {isEditMode && <TermEditor onClose={toggleEditor} />}
+            {isEditMode && <TermEditor onSave={handleSaveTerm} onClose={toggleEditor} />}
             <ul role="list" className="divide-y divide-gray-100">
                 {terms.map((term) => (
-                    <TermItem term={term} onRemoveTerm={handleRemoveTerm} />
+                    <TermItem key={term.id} term={term} onRemoveTerm={handleRemoveTerm} />
                 ))}
             </ul>
         </div>

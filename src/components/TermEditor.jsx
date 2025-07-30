@@ -6,8 +6,9 @@ import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
 import { NumericFormat } from "react-number-format";
 
-export default function TermEditor({ term, onSave, onRemove, onClose }) {
-    const [savedTerm, setSavedTerm] = useState({ ...term });
+export default function TermEditor({ term, onSave, onClose, onRemove }) {
+
+    const [newTerm, setNewTerm] = useState({ ...term });
 
     const personnelOptions = [
         "DOCTOR", "NURSE", "TECHNICIAN"
@@ -15,15 +16,15 @@ export default function TermEditor({ term, onSave, onRemove, onClose }) {
 
     return (
         <div className="border p-4 my-4 rounded-md border-gray-300">
-            <Input labelText="Start Time" inputType="time" value={savedTerm.startTime} onChange={e => setSavedTerm({ ...savedTerm, startTime: e.target.value })} />
-            <Input labelText="End Time" inputType="time" value={savedTerm.endTime} onChange={e => setSavedTerm({ ...savedTerm, endTime: e.target.value })} />
+            <Input labelText="Start Time" inputType="time" value={newTerm.startTime} onChange={e => setNewTerm({ ...newTerm, startTime: e.target.value })} />
+            <Input labelText="End Time" inputType="time" value={newTerm.endTime} onChange={e => setNewTerm({ ...newTerm, endTime: e.target.value })} />
             <Selectbox
                 labelText="Required Personnel"
                 elements={personnelOptions}
-                value={savedTerm.requiredPersonnel}
-                onChange={e => setSavedTerm({ ...savedTerm, requiredPersonnel: e.target.value })}
+                value={newTerm.requiredPersonnel}
+                onChange={e => setNewTerm({ ...newTerm, requiredPersonnel: e.target.value })}
             />
-            <TextArea labelText="Description" value={savedTerm.description} onChange={e => setSavedTerm({ ...savedTerm, description: e.target.value })} />
+            <TextArea labelText="Description" value={newTerm.description} onChange={e => setNewTerm({ ...newTerm, description: e.target.value })} />
             <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Compensation
@@ -31,8 +32,8 @@ export default function TermEditor({ term, onSave, onRemove, onClose }) {
                 <div className="mt-2">
 
                     <NumericFormat
-                        value={savedTerm.compensation}
-                        onValueChange={e => setSavedTerm({ ...savedTerm, compensation: e.value })}
+                        value={newTerm.compensation}
+                        onValueChange={e => setNewTerm({ ...newTerm, compensation: e.value })}
                         thousandSeparator="."
                         decimalSeparator=","
                         prefix="€ "
@@ -44,7 +45,7 @@ export default function TermEditor({ term, onSave, onRemove, onClose }) {
                 </div>
             </div>
             <div className="flex mt-2 gap-x-2">
-                <Button onClick={() => onSave(savedTerm)}>Save Term</Button>
+                <Button onClick={() => onSave(newTerm)}>Add term</Button>
                 <Button onClick={onClose}>Close</Button>
             </div>
         </div >

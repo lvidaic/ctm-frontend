@@ -41,8 +41,7 @@ export default function EventEditor({ event, onSave }) {
             } />
             <p>{savedEvent?.address}</p>
             <TermList terms={savedEvent.terms || []} onTermsChange={handleTermsChange} />
-            <Button onClick={() => onSave(savedEvent)}>Save</Button>
-
+            <Button className="w-24" onClick={() => onSave(savedEvent)}>Save</Button>
         </div>
     )
 }

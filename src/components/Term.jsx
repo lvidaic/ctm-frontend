@@ -75,17 +75,15 @@ export default function TermList({ terms, onTermsChange }) {
         onTermsChange([...terms, newTerm]);
     }
 
-    {/* <Term key={term.id} term={term} onSave={handleSaveTerm} onRemove={handleRemoveTerm} /> */ }
     return (
         <div>
-            <h4 className="text-xl">Terms</h4>
-
+            <h4 className="text-xl mb-3">Terms</h4>
+            <Button className="w-24" onClick={handleAddTerm}>Add Term</Button>
             <ul role="list" className="divide-y divide-gray-100">
                 {terms.map((term) => (
-                    <TermItem term={term} />
+                    <TermItem term={term} onRemoveTerm={handleRemoveTerm} />
                 ))}
             </ul>
-            <Button onClick={handleAddTerm}>Add Term</Button>
         </div>
     );
 }

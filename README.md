@@ -52,4 +52,5 @@ If you are developing a production application, we recommend using TypeScript wi
 - [x] add navigation
 - [ ] address autocomplete should display latest value
 - [ ] finish saving of events with terms 
+- [ ] term should become term editor
 

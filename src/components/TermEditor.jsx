@@ -16,8 +16,8 @@ export default function TermEditor({ term, onSave, onClose, onRemove }) {
 
     return (
         <div className="border p-4 my-4 rounded-md border-gray-300">
-            <Input labelText="Start Time" inputType="time" value={newTerm.startTime} onChange={e => setNewTerm({ ...newTerm, startTime: e.target.value })} />
-            <Input labelText="End Time" inputType="time" value={newTerm.endTime} onChange={e => setNewTerm({ ...newTerm, endTime: e.target.value })} />
+            <Input labelText="Starts At" inputType="time" value={newTerm.startsAt} onChange={e => setNewTerm({ ...newTerm, startsAt: e.target.value })} />
+            <Input labelText="Ends At" inputType="time" value={newTerm.endsAt} onChange={e => setNewTerm({ ...newTerm, endsAt: e.target.value })} />
             <Selectbox
                 labelText="Required Personnel"
                 elements={personnelOptions}

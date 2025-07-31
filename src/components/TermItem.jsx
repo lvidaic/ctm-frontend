@@ -1,6 +1,5 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisVerticalIcon, TrashIcon, PencilIcon } from '@heroicons/react/20/solid'
-import Button from './Button'
 
 export default function TermItem({ term, onRemoveTerm }) {
     return (
@@ -16,12 +15,12 @@ export default function TermItem({ term, onRemoveTerm }) {
                 </div>
                 <div className="mt-1 flex items-center gap-x-2 text-xs/5 text-gray-500">
                     <p className="whitespace-nowrap">
-                        Starts At: <time dateTime={term.startTime}>{term.startTime}</time>
+                        Starts At: <time dateTime={term.startsAt}>{term.startsAt}</time>
                     </p>
                     <svg viewBox="0 0 2 2" className="size-0.5 fill-current">
                         <circle r={1} cx={1} cy={1} />
                     </svg>
-                    <p className="truncate">Ends At: {term.endTime}</p>
+                    <p className="truncate">Ends At: {term.endsAt}</p>
                 </div>
                 <div>
                     <p className="truncate font-medium text-xs/5 text-gray-500">Required Personnel: {term.requiredPersonnel}</p>

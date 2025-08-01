@@ -32,9 +32,6 @@ export default function EventItem({ event, onRemoveEvent }) {
                     </svg>
                     <p className="truncate">Location: {event.address}</p>
                 </div>
-                <div>
-                    {/* <p className="truncate font-medium text-xs/5 text-gray-500">Required Personnel: {term.requiredPersonnel}</p> */}
-                </div>
             </div>
             <div className="flex flex-none items-center gap-x-4 text-sm/6 text-gray-500">
                 <Link to={`/event/${event.id}`} className="hover:cursor-pointer">Edit</Link>

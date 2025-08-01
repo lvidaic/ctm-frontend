@@ -1,12 +1,23 @@
 import useSWR from "swr";
 import EventItem from "./EventItem";
 import { useCurrentClient } from "../stores/user-store";
-import { fetcher } from "../utils/fetchers";
+import { deleteEvent, fetcher } from "../utils/fetchers";
+import useSWRMutation from "swr/mutation";
 
 export default function EventList() {
 
+
+    function handleRemoveEvent(event) {
+        triggerDelete({ event })
+    }
+
+    function onDeleteSuccess() {
+        mutate();
+    }
+
     const { client } = useCurrentClient();
-    const { data: events, error: isError, isLoading } = useSWR(() => "http://localhost:8080/api/events/client/" + client.id, fetcher);
+    const { data: events, error: isError, isLoading, mutate } = useSWR(() => "http://localhost:8080/api/events/client/" + client.id, fetcher);
+    const { trigger: triggerDelete } = useSWRMutation('http://localhost:8080/api/events', deleteEvent, { onSuccess: onDeleteSuccess });
 
     if (isLoading) {
         return <div>Loading data</div>
@@ -14,10 +25,6 @@ export default function EventList() {
 
     if (isError) {
         return <div>Error while loadign data</div>
-    }
-
-    function handleRemoveEvent(event) {
-        console.log("Removing event: ", event);
     }
 
     return (

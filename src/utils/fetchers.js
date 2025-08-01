@@ -59,3 +59,8 @@ export function createEvent(url, { arg }) {
     )
     .then((res) => res.data);
 }
+
+export const deleteEvent = async (url, { arg }) => {
+  const res = await axios.delete(`${url}/${arg.event.id}`);
+  return res.data;
+};

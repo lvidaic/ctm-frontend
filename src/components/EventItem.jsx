@@ -1,9 +1,13 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisVerticalIcon, TrashIcon, PencilIcon } from '@heroicons/react/20/solid'
-import Button from './Button'
+import { Link, useNavigate } from 'react-router'
+
 
 export default function EventItem({ event, onRemoveEvent }) {
+
+    const navigate = useNavigate();
+
     return (
         <li key={event.id} className="flex items-center justify-between gap-x-6 py-5 hover:cursor-pointer">
             <div className="min-w-0">
@@ -29,7 +33,7 @@ export default function EventItem({ event, onRemoveEvent }) {
                 </div>
             </div>
             <div className="flex flex-none items-center gap-x-4 text-sm/6 text-gray-500">
-                <Button className="hover:cursor-pointer">Edit</Button>
+                <Link to={`/event/${event.id}`} className="hover:cursor-pointer">Edit</Link>
                 <Menu as="div" className="relative flex-none">
                     <MenuButton className="relative block text-gray-500 hover:text-gray-900 hover:cursor-pointer">
                         <span className="absolute -inset-2.5" />
@@ -41,7 +45,7 @@ export default function EventItem({ event, onRemoveEvent }) {
                         className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                     >
                         <MenuItem>
-                            <button className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 data-focus:bg-white/10">
+                            <button onClick={() => navigate(`/event/${event.id}`)} className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 data-focus:bg-white/10">
                                 <PencilIcon className="size-4 text-gray-500" />
                                 Edit
                                 <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-focus:inline">⌘E</kbd>

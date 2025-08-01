@@ -8,6 +8,7 @@ import UserProfileLayout from './layouts/UserProfileLayout.jsx';
 import { HomeIcon, UserIcon, CalendarIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/solid';
 import { NavLink } from 'react-router';
 import { useCurrentClient } from './stores/user-store.js';
+import EventList from './components/EventList.jsx';
 
 function App() {
 
@@ -31,13 +32,14 @@ function App() {
                 <div className='flex flex-row gap-x-3'>
                     <NavLink to="/" className='rounded-lg border-2 border-gray-300 py-2 px-3'><HomeIcon className='text-gray-900 size-8' /></NavLink>
                     <NavLink to={"/client/" + client.id} className='rounded-lg border-2 border-gray-300 py-2 px-3'><UserIcon className='text-gray-900 size-8' /></NavLink>
-                    <NavLink to="/event" className='rounded-lg border-2  border-gray-300 py-2 px-3'><CalendarIcon className='text-gray-900 size-8' /></NavLink>
+                    <NavLink to="/events" className='rounded-lg border-2  border-gray-300 py-2 px-3'><CalendarIcon className='text-gray-900 size-8' /></NavLink>
                 </div>
             </nav >
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="elements" element={<Elements />} />
                 <Route path="event/:eventId?" element={<Event />} />
+                <Route path="events" element={<EventList />} />
                 <Route element={<UserProfileLayout />}>
                     <Route path="client/:clientId?" element={<Client />} />
                     <Route path="provider/:providerId?" element={<Provider />} />

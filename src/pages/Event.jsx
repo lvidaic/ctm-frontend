@@ -31,8 +31,7 @@ export default function Event() {
             <h3 className="text-2xl mb-2">
                 Event
             </h3>
-            <EventList />
-            {/* <EventEditor event={event} onSave={saveEvent} /> */}
+            <EventEditor event={event} onSave={saveEvent} />
         </div>
     );
 }

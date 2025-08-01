@@ -4,7 +4,6 @@ import { useEvent } from "../stores/event-store";
 import useSWRMutation from "swr/mutation";
 import { createEvent } from "../utils/fetchers";
 import { useCurrentClient } from "../stores/user-store.js"
-import EventList from "../components/EventList.jsx";
 
 export default function Event() {
 

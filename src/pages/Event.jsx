@@ -4,6 +4,7 @@ import { useEvent } from "../stores/event-store";
 import useSWRMutation from "swr/mutation";
 import { createEvent } from "../utils/fetchers";
 import { useCurrentClient } from "../stores/user-store.js"
+import EventList from "../components/EventList.jsx";
 
 export default function Event() {
 
@@ -30,7 +31,8 @@ export default function Event() {
             <h3 className="text-2xl mb-2">
                 Event
             </h3>
-            <EventEditor event={event} onSave={saveEvent} />
+            <EventList />
+            {/* <EventEditor event={event} onSave={saveEvent} /> */}
         </div>
     );
 }

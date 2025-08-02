@@ -30,6 +30,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { useImage } from './stores/image-store.js';
+import Login from './pages/Login.jsx';
 
 
 
@@ -345,6 +346,7 @@ export default function App() {
                             <div className="container mx-auto px-4 lg:px-8">
                                 <Routes>
                                     <Route index element={<Home />} />
+                                    <Route path="login" element={<Login />} />
                                     <Route path="elements" element={<Elements />} />
                                     <Route path="event/:eventId?" element={<Event />} />
                                     <Route path="events" element={<EventList />} />

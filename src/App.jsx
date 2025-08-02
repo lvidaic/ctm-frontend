@@ -3,7 +3,7 @@ import Elements from './pages/Elements.jsx';
 import Client from './pages/Client.jsx';
 import Event from './pages/Event.jsx';
 import Home from './pages/Home.jsx';
-import { Routes, Route, useNavigate, NavLink } from 'react-router';
+import { Routes, Route, NavLink } from 'react-router';
 import UserProfileLayout from './layouts/UserProfileLayout.jsx';
 import { useCurrentClient } from './stores/user-store.js';
 import EventList from './components/EventList.jsx';
@@ -23,10 +23,7 @@ import {
     Bars3Icon,
     BellIcon,
     CalendarIcon,
-    ChartPieIcon,
     Cog6ToothIcon,
-    DocumentDuplicateIcon,
-    FolderIcon,
     HomeIcon,
     UserIcon,
     XMarkIcon,
@@ -42,9 +39,6 @@ const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon, current: true },
     { name: 'Events', href: 'events', icon: CalendarIcon, current: false },
     { name: 'Profile', href: 'client/', dynamic: resolveClient, icon: UserIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
 const teams = [
     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },

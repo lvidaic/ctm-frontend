@@ -27,9 +27,6 @@ export default function Event() {
 
     return (
         <div className="flex flex-col mt-5">
-            <h3 className="text-2xl mb-2">
-                Event
-            </h3>
             <EventEditor event={event} onSave={saveEvent} />
         </div>
     );

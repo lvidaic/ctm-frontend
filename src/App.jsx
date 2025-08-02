@@ -32,6 +32,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { useImage } from './stores/image-store.js';
 
 
 
@@ -51,7 +52,7 @@ const teams = [
     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ]
 const userNavigation = [
-    { name: 'Your profile', href: '#' },
+    { name: 'Your profile', href: '#', dynamic: resolveClient },
     { name: 'Sign out', href: '#' },
 ]
 
@@ -68,13 +69,13 @@ export default function App() {
 
 
     const { client, isLoading, isError } = useCurrentClient();
-    const navigate = useNavigate();
+    const { image, isError: isImageError, isLoading: isImageLoading } = useImage(client);
 
-    if (isLoading) {
+    if (isLoading || isImageLoading) {
         return (<div>Loading data</div>)
     }
 
-    if (isError) {
+    if (isError || isImageError) {
         return (<div>Error loading data</div>)
     }
 
@@ -315,12 +316,12 @@ export default function App() {
                                         <span className="sr-only">Open user menu</span>
                                         <img
                                             alt=""
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            className="size-8 rounded-full bg-gray-50"
+                                            src={image}
+                                            className="size-10 object-cover rounded-full bg-gray-50"
                                         />
                                         <span className="hidden lg:flex lg:items-center">
                                             <span aria-hidden="true" className="ml-4 text-sm/6 font-semibold text-gray-900">
-                                                Tom Cook
+                                                {client.name}
                                             </span>
                                             <ChevronDownIcon aria-hidden="true" className="ml-2 size-5 text-gray-400" />
                                         </span>
@@ -332,7 +333,7 @@ export default function App() {
                                         {userNavigation.map((item) => (
                                             <MenuItem key={item.name}>
                                                 <a
-                                                    href={item.href}
+                                                    href={item.dynamic ? item.dynamic(client) : item.href}
                                                     className="block px-3 py-1 text-sm/6 text-gray-900 data-[focus]:bg-gray-50 data-[focus]:outline-none"
                                                 >
                                                     {item.name}

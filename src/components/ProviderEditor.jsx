@@ -5,6 +5,7 @@ import TextArea from "./TextArea";
 import Selectbox from "./Selectbox";
 import ImageUpload from "./ImageUpload";
 import Autocomplete from "./Autocomplete.jsx"
+import { usePersonnel } from "../stores/personnel-store.js";
 
 export default function ProviderEditor({ image, provider, onSave }) {
 
@@ -15,12 +16,22 @@ export default function ProviderEditor({ image, provider, onSave }) {
     const [savedProvider, setSavedProvider] = useState({ ...provider });
     const [savedImage, setSavedImage] = useState(null);
 
+    const { personnel, isLoading, isError } = usePersonnel();
+
+    if (isError) {
+        return <div>Error while loading data</div>
+    }
+
+    if (isLoading) {
+        return <div>Loading data</div>
+    }
+
     return (
         <>
             <Input labelText="First Name" value={savedProvider.firstName} onChange={(e) => setSavedProvider({ ...savedProvider, firstName: e.target.value })} />
             <Input labelText="Last Name" value={savedProvider.lastName} onChange={(e) => setSavedProvider({ ...savedProvider, lastName: e.target.value })} />
             <TextArea labelText="Description" value={savedProvider.description} onChange={e => setSavedProvider({ ...savedProvider, description: e.target.value })} />
-            <Selectbox labelText="Role" value={savedProvider.role} elements={["DOCTOR", "TECHNITIAN"]} onChange={e => setSavedProvider({ ...savedProvider, role: e.target.value })} />
+            <Selectbox labelText="Role" value={savedProvider.role} elements={personnel} onChange={e => setSavedProvider({ ...savedProvider, role: e.target.value })} />
             <div>
                 <ImageUpload image={image} labelText="Image" onFileLoad={onFileLoad} />
                 <Autocomplete textLabel="Address" onAutocompleteSelect={address =>

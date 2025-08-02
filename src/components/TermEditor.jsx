@@ -5,14 +5,21 @@ import Input from "./Input";
 import Selectbox from "./Selectbox";
 import TextArea from "./TextArea";
 import { NumericFormat } from "react-number-format";
+import { usePersonnel } from "../stores/personnel-store";
 
 export default function TermEditor({ term, onSave, onClose, onRemove }) {
 
     const [newTerm, setNewTerm] = useState({ ...term });
 
-    const personnelOptions = [
-        "DOCTOR", "NURSE", "TECHNICIAN"
-    ];
+    const { personnel, isLoading, isError } = usePersonnel();
+
+    if (isLoading) {
+        return <div>Loading data</div>
+    }
+
+    if (isError) {
+        return <div>Error while loading data</div>
+    }
 
     return (
         <div className="border p-4 my-4 rounded-md border-gray-300">
@@ -20,7 +27,7 @@ export default function TermEditor({ term, onSave, onClose, onRemove }) {
             <Input labelText="Ends At" inputType="time" value={newTerm.endsAt} onChange={e => setNewTerm({ ...newTerm, endsAt: e.target.value })} />
             <Selectbox
                 labelText="Required Personnel"
-                elements={personnelOptions}
+                elements={personnel}
                 value={newTerm.requiredPersonnel}
                 onChange={e => setNewTerm({ ...newTerm, requiredPersonnel: e.target.value })}
             />

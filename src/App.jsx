@@ -40,7 +40,7 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon, current: true },
     { name: 'Events', href: 'events', icon: CalendarIcon, current: false },
-    { name: 'Profile', href: 'client/', icon: UserIcon, current: false },
+    { name: 'Profile', href: 'client/', dynamic: resolveClient, icon: UserIcon, current: false },
     { name: 'Projects', href: '#', icon: FolderIcon, current: false },
     { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
     { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
@@ -57,6 +57,10 @@ const userNavigation = [
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
+}
+
+function resolveClient(client) {
+    return `client/${client.id}`
 }
 
 export default function App() {
@@ -114,7 +118,7 @@ export default function App() {
                                                 {navigation.map((item) => (
                                                     <li key={item.name}>
                                                         <NavLink
-                                                            to={item.href}
+                                                            to={item.dynamic ? item.dynamic(client) : item.href}
                                                             className={classNames(
                                                                 item.current
                                                                     ? 'bg-gray-50 text-indigo-600'
@@ -202,7 +206,8 @@ export default function App() {
                                         {navigation.map((item) => (
                                             <li key={item.name}>
                                                 <NavLink
-                                                    to={item.href}
+
+                                                    to={item.dynamic ? item.dynamic(client) : item.href}
                                                     className={classNames(
                                                         item.current
                                                             ? 'bg-gray-50 text-indigo-600'
